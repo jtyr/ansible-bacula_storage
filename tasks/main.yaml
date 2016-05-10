@@ -1,0 +1,51 @@
+---
+
+- name: Test distribution
+  assert:
+    that: >
+      ansible_os_family == "RedHat"
+  tags:
+    - bacula_storage_assert
+
+- name: Install Bacula Storage package
+  package:
+    name: "{{ bacula_storage_pkg }}"
+    state: present
+  notify:
+    - Restart Bacula Storage service
+  tags:
+    - bacula_storage_pkg
+
+- name: Configure Bacula Storage service
+  template:
+    src: bacula-sd.conf.j2
+    dest: "{{ bacula_storage_config_file_path }}"
+  notify:
+    - Restart Bacula Storage service
+  tags:
+    - bacula_storage_config
+
+- name: Configure Bacula Storage sysconfig
+  template:
+    src: bacula-sd.sysconfig.j2
+    dest: "{{ bacula_storage_sysconfig_file }}"
+  notify:
+    - Restart Bacula Storage service
+  when: ansible_os_family == "RedHat"
+  tags:
+    - bacula_storage_config
+
+- name: Make sure the Bacula Storage service is enabled
+  service:
+    name: "{{ bacula_storage_service }}"
+    enabled: yes
+  tags:
+    - bacula_storage_service
+
+- name: Make sure the Bacula Storage service is running
+  service:
+    name: "{{ bacula_storage_service }}"
+    state: started
+  register: bacula_storage_service_started
+  tags:
+    - bacula_storage_service

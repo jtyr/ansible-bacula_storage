@@ -1,0 +1,19 @@
+{{ ansible_managed | comment }}
+
+{{ bacula_storage_config_storage | encode_nginx }}
+
+{%- if bacula_storage_config_director | length > 0 -%}
+{{ "\n" }}{{ bacula_storage_config_director | encode_nginx }}
+{%- endif %}
+
+{%- if bacula_storage_config_device | length > 0 -%}
+{{ "\n" }}{{ bacula_storage_config_device | encode_nginx }}
+{%- endif %}
+
+{%- if bacula_storage_config_messages | length > 0 -%}
+{{ "\n" }}{{ bacula_storage_config_messages | encode_nginx }}
+{%- endif %}
+
+{%- if bacula_storage_config_custom | length > 0 -%}
+{{ "\n" }}{{ bacula_storage_config_custom | encode_nginx }}
+{%- endif %}

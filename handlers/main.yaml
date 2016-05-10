@@ -1,0 +1,9 @@
+---
+
+- name: Restart Bacula Storage service
+  service:
+    name: "{{ bacula_storage_service }}"
+    state: restarted
+  when: >
+    bacula_storage_service_started is not defined or
+    not bacula_storage_service_started.changed
