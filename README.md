@@ -1,7 +1,7 @@
 bacula_storage
 ==============
 
-Ansible role which helps to intall and configure Bacula Storage.
+Ansible role which helps to install and configure Bacula Storage.
 
 The configuration of the role is done in such way that it should not be
 necessary to change the role for any kind of configuration. All can be
