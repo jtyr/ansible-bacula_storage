@@ -33,19 +33,8 @@ Examples
 ```
 
 Please refer to the
-[`bacula_dir`](https://github.com/jtyr/ansible-bacula_director) for more
+[`bacula_director`](https://github.com/jtyr/ansible-bacula_director) for more
 complete example of Bacula installation.
-
-This role requires [Config
-Encoders](https://github.com/jtyr/ansible/blob/jtyr-config_encoders/lib/ansible/plugins/filter/config_encoders.py).
-Download the file and put it into the `filter_plugins` directory in the root of
-your playbook:
-
-```
-$ mkdir ./filter_plugins
-$ cd ./filter_plugins
-$ curl -O https://github.com/jtyr/ansible/blob/jtyr-config_encoders/lib/ansible/plugins/filter/config_encoders.py
-```
 
 
 Role variables
@@ -219,10 +208,10 @@ bacula_storage_sysconfig: "{{
 Dependencies
 ------------
 
-- [Config Encoders](https://github.com/jtyr/ansible/blob/jtyr-config_encoders/lib/ansible/plugins/filter/config_encoders.py)
 - [`bacula_client`](https://github.com/jtyr/ansible-bacula_client) (optional)
 - [`bacula_console`](https://github.com/jtyr/ansible-bacula_console) (optional)
 - [`bacula_director`](https://github.com/jtyr/ansible-bacula_director) (optional)
+- [`config_encoder_filters`](https://github.com/jtyr/ansible-config_encoder_filters)
 
 
 License
