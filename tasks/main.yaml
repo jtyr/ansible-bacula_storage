@@ -10,7 +10,6 @@
 - name: Install Bacula Storage package
   package:
     name: "{{ bacula_storage_pkg }}"
-    state: present
   notify:
     - Restart Bacula Storage service
   tags:
