@@ -44,7 +44,7 @@ bacula_storage_config_storage:
 
 # Default values of Director resource options
 bacula_storage_config_director_options_name: bacula-dir
-bacula_storage_config_director_options_password: bacula
+bacula_storage_config_director_options_password: "{{ bacula_director_config_director_options_password | default('bacula') }}"
 
 # Default Director resource options
 bacula_storage_config_director_options__default:
@@ -144,8 +144,8 @@ bacula_storage_config_custom: []
 bacula_storage_sysconfig_file: /etc/sysconfig/bacula-sd
 
 # Default values of the default sysconfig options
-bacula_storage_sysconfig_user: ""
-bacula_storage_sysconfig_group: ""
+bacula_storage_sysconfig_user: "bacula"
+bacula_storage_sysconfig_group: "tape"
 
 # Default sysconfig options
 bacula_storage_sysconfig__default:
